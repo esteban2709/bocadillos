@@ -34,6 +34,7 @@ public class Controller implements ActionListener{
 	public Controller() {
 		mainWindow = new MainWindow(this);
 		start();
+		System.out.println("HHollaaa");
 	}
 	
 	
