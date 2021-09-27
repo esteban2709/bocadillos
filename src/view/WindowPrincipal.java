@@ -3,23 +3,24 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
-
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import controller.Controller;
 
 
-public class WindowPrincipal extends JFrame{
+public class WindowPrincipal extends JDialog{
 
 	private static final long serialVersionUID = 1L;
 	private PanelCentral panelCentral;
 	
-	public WindowPrincipal(Controller controller) {
+	public WindowPrincipal(Controller controller, JFrame parent) {
+		super(parent);
+		this.getContentPane().setBackground(Color.WHITE);
 		setTitle("Bocadillo Simuador");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setExtendedState(MAXIMIZED_BOTH);
-		
+		this.setSize(1280, 530);
+		this.setResizable(false);
 	
 		setLayout(new java.awt.GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -30,10 +31,10 @@ public class WindowPrincipal extends JFrame{
 		c.weightx=0.05;
 		c.gridx=4;//desde donde inicia y solo hasta 12
 		c.gridwidth=4;// numero de cuadros a tomar 
-		JLabel lbTitle = new JLabel("SIMULADOR FABRICA DE BOCADILLOS");
+		JLabel lbTitle = new JLabel("FABRICA DE BOCADILLOS");
 		lbTitle.setFont(new Font("Helvetica", Font.BOLD, 50));
 		lbTitle.setBorder(null);
-		lbTitle.setForeground(Color.BLACK);
+		lbTitle.setForeground(Color.decode("#ff9d01"));
 		add(lbTitle, c);
 		
 		c.gridy=1;

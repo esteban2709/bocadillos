@@ -1,13 +1,9 @@
 package view;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
-
 import controller.Controller;
 
 public class MainWindow extends JFrame{
@@ -15,41 +11,23 @@ public class MainWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JTableWindow jtTableWindow,jtTableWindow1,jtTableWindow2,jtTableWindow3,jtTableWindow4;
 	private JTabbedPane jTabbedPane;
-	private JTextField txHorasTrabajo;
-	private JTextField txDiasTrabajo;
+	private PanelSuperior panelSuperior;
 	
 	public MainWindow(Controller controller) {
 		setTitle("Bocadillo Simuador");
 		setSize(700, 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setLayout(null);
+		setLayout(new BorderLayout());
 		jTabbedPane = new JTabbedPane();
 		initComponents(controller);
 		setVisible(true);
 	}
 	
 	private void initComponents(Controller controller) {
-		JButton jbuton = new JButton("Mas informacion");
-		jbuton.setActionCommand("mas informacion");
-		jbuton.addActionListener(controller);
-		jbuton.setBounds(10, 50, 140, 50);
-		add(jbuton);
-		txHorasTrabajo = new JTextField();
-		txHorasTrabajo.setBorder(BorderFactory.createTitledBorder("Horas trabajo/diarias"));
-		txHorasTrabajo.setBounds(20, 120, 140, 50);
-		add(txHorasTrabajo);
-		txDiasTrabajo = new JTextField();
-		txDiasTrabajo.setBorder(BorderFactory.createTitledBorder("Dias a simular"));
-		txDiasTrabajo.setBounds(20, 180, 140, 50);
-		add(txDiasTrabajo);
-		JButton btnActualizar = new JButton("Actualizar");
-		btnActualizar.setActionCommand("Actualizar");
-		btnActualizar.addActionListener(controller);
-		btnActualizar.setBounds(20, 300, 140, 50);
-		add(btnActualizar);
+		this.panelSuperior = new PanelSuperior(controller);
+		this.add(this.panelSuperior , BorderLayout.NORTH);
 		
-		JPanel aux = new JPanel();
 		jtTableWindow = new JTableWindow();
 		jtTableWindow1 = new JTableWindow();
 		jtTableWindow2 = new JTableWindow();
@@ -65,9 +43,7 @@ public class MainWindow extends JFrame{
 		jTabbedPane.addTab("Estacion 3", scroll2);
 		jTabbedPane.addTab("Estacion 4", scroll3);
 		jTabbedPane.addTab("Estacion 5", scroll4);
-		aux.add(jTabbedPane);
-		aux.setBounds(-120, 0, 1100, 1100);
-		add(aux);
+		add(jTabbedPane , BorderLayout.CENTER);
 	}
 	
 	public void refreshTable1(double[] at,double[] aat,double[] wt,double[] st, double[] et) {
@@ -91,10 +67,10 @@ public class MainWindow extends JFrame{
 	}
 	
 	public int getHorasTrabajo() {
-		return Integer.parseInt(txHorasTrabajo.getText());
+		return this.panelSuperior.getHorasTrabajo();
 	}
 	public int getDiasTrabajo() {
-		return Integer.parseInt(txDiasTrabajo.getText());
+		return this.panelSuperior.getDiasTrabajo();
 	}
 
 }

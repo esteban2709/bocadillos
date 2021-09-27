@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.text.DecimalFormat;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -27,9 +28,10 @@ public class JTableWindow extends JPanel {
 		
 	
 	public void refreshTable(double[] at,double[] aat,double[] wt,double[] st,double[] et) {
+		DecimalFormat df = new DecimalFormat("#.00000");
 		model.setRowCount(0);
 		for (int i = 0; i < at.length; i++) {
-			model.addRow(new Object[] {at[i],aat[i],wt[i],st[i],et[i]});
+			model.addRow(new Object[] {df.format(at[i]),df.format(aat[i]),df.format(wt[i]),df.format(st[i]),df.format(et[i])});
 		}
 	}		
 	

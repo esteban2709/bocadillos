@@ -60,7 +60,7 @@ public class Controller implements ActionListener{
 		while (diasAcumulados<TOTAL_DIAS) {
 			//Cajas que ingresan
 			numCajasB = findCajas();
-			System.out.println("Número de cajas que no se dañaron "+numCajasB);
+			System.out.println("Numero de cajas que no se danaron "+numCajasB);
 			cajasEntran+=numCajasB;
 			//Estacion Uno
 			System.out.println("********* Estacion 1 **********");
@@ -75,7 +75,7 @@ public class Controller implements ActionListener{
 				diasAcumulados++;
 			}
 			if(diasAcumulados>=TOTAL_DIAS) {
-				System.out.println("Paro en la estación Uno");
+				System.out.println("Paro en la estacion Uno");
 				break;
 			}
 			mainWindow.refreshTable1(estacionUno.listAT, estacionUno.listAAT,
@@ -92,7 +92,7 @@ public class Controller implements ActionListener{
 				diasAcumulados++;
 			}
 			if(diasAcumulados>=TOTAL_DIAS) {
-				System.out.println("Paro en la estación dos");
+				System.out.println("Paro en la estaciï¿½n dos");
 				break;
 			}
 			mainWindow.refreshTable2(estacionDos.listAT, estacionDos.listAAT,
@@ -109,7 +109,7 @@ public class Controller implements ActionListener{
 				diasAcumulados++;
 			}
 			if(diasAcumulados>=TOTAL_DIAS) {
-				System.out.println("Paro en la estación tres");
+				System.out.println("Paro en la estaciï¿½n tres");
 				break;
 			}
 			diasAcumulados = diasAcumulados+2;
@@ -128,7 +128,7 @@ public class Controller implements ActionListener{
 				diasAcumulados++;
 			}
 			if(diasAcumulados>=TOTAL_DIAS) {
-				System.out.println("Paro en la estación cuatro");
+				System.out.println("Paro en la estacion cuatro");
 				break;
 			}
 			mainWindow.refreshTable4(estacionCuatro.listAT, estacionCuatro.listAAT,
@@ -146,7 +146,7 @@ public class Controller implements ActionListener{
 				diasAcumulados++;
 			}
 			if(diasAcumulados>=TOTAL_DIAS) {
-				System.out.println("Paro en la estación cinco");
+				System.out.println("Paro en la estacion cinco");
 				break;
 			}
 			lonjasTotal += estacionCuatro.lonjasCaja;
@@ -164,7 +164,7 @@ public class Controller implements ActionListener{
 		
 		System.out.println("transcurrieron "+diasAcumulados+ " dias y fueron "+horasAcumuladas);
 		System.out.println("al final ingresaron "+ cajasEntran+" cajas");
-		System.out.println("y se obtuvo en todos esos días "+stockCajas+ "cajas con 8 lonjas cada una, dando un total de "+lonjasTotal+" bocadillos de guayaba");
+		System.out.println("y se obtuvo en todos esos dï¿½as "+stockCajas+ "cajas con 8 lonjas cada una, dando un total de "+lonjasTotal+" bocadillos de guayaba");
 		//
 		
 	}
@@ -173,18 +173,18 @@ public class Controller implements ActionListener{
 	
 	/**
 	 * Metodo encargado de obtener cajas, y tener una probabilidad
-	 * de que se dañe de 0.85 (85%)
+	 * de que se daï¿½e de 0.85 (85%)
 	 * @return una cantidad de cajas 
 	 */
 	public int findCajas() {
 		numCajasE = 4 + (int)(Math.random()*10);
-		System.out.println("Número de cajas que entran a bodega "+numCajasE);
+		System.out.println("Nï¿½mero de cajas que entran a bodega "+numCajasE);
 		int countCajas=0;
 		for (int i = 0; i < numCajasE; i++) {
 			if(Math.random()<0.85) {
 				countCajas++;
 			}else {
-				System.out.println("Caja dañada");
+				System.out.println("Caja daï¿½ada");
 			}
 		}
 		return countCajas;
@@ -195,7 +195,9 @@ public class Controller implements ActionListener{
 		
 		
 		if(e.getActionCommand().equalsIgnoreCase("mas informacion")) {
-			windowPrincipal= new WindowPrincipal(this);
+			windowPrincipal= new WindowPrincipal(this , this.mainWindow);
+			this.windowPrincipal.setVisible(true);
+			System.out.println("JDialogg");
 		}
 		
 		if(e.getActionCommand().equalsIgnoreCase("Actualizar")) {
