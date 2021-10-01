@@ -36,6 +36,9 @@ public class Controller implements ActionListener{
 		start();
 	}
 	
+	/**
+	 *Actualiza las tablas con los nuevos datos ingresados  
+	 */
 	private void actualizar() {
 		System.out.println("Se ha presionado el boton actualizar");
 		diasAcumulados=0;
@@ -54,6 +57,9 @@ public class Controller implements ActionListener{
 		mainWindow.refreshTable5(estacionCinco.listAT, estacionCinco.listAAT, estacionCinco.listWT, estacionCinco.listST, estacionCinco.listET);
 	}
 
+	/**
+	 * Este metodo se encarga de todo el proceso de la fabrica, lleva a cabo las 5 estaciones iterativamente hasta que se cumplen los 25 dias
+	 */
 	public void start() {
 		while (diasAcumulados<TOTAL_DIAS) {
 			//Cajas que ingresan

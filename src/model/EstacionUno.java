@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * 
  * @author 
- * 	Correspondiente a Recepción, lavado y preparación:
+ * 	Correspondiente a Recepcion, lavado y preparacion:
  *	Se utiliza sistema de colas para simular los tiempos 
  *	de los procesos mencionados.
  */
@@ -20,7 +20,6 @@ public class EstacionUno {
 	 * @param numCajas Aleatorio (Depende del Clima por ejemplo)
 	 */
 	public EstacionUno(int numCajas){
-		System.out.println("------------------------------------------------------------- " + numCajas);
 		listAT = new double[numCajas];
 		listAAT = new double[numCajas];
 		listWT = new double[numCajas];
@@ -34,8 +33,6 @@ public class EstacionUno {
 	 */
 	public void startStation() {
 		fillLists();
-		
-		random.nextInt();
 	}
 	
 	/**
@@ -46,10 +43,16 @@ public class EstacionUno {
 	public void fillLists() {
 		for (int i = 0; i < listAT.length; i++) {
 			if(i==0) {
+				//Lista arrival time
+				//Se genera un numero pseudoaleatorio con una distribucion uniforme
 				listAT[i] = (random.nextDouble()*30)+10;
+				//Lista Arrivla time acumulada
 				listAAT[i]=listAT[0];
+				//Lista Wait Time
 				listWT[i] = 0;
+				//Lista Service time
 				listST[i] = (Math.random()*25)+15;
+				//Lista Exit time
 				listET[i]= listAT[i]+listWT[i]+listST[i];
 			}else {
 				listAT[i] = (random.nextDouble()*30)+10;

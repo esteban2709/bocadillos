@@ -1,7 +1,10 @@
 package model;
 
 import java.util.Random;
-
+/**
+ * Estación 4: Corte y empacado
+ *
+ */
 public class EstacionCuatro {
 
 	public double[] listAT, listAAT, listWT, listST, listET;
@@ -18,11 +21,19 @@ public class EstacionCuatro {
 		random = new Random();
 	}
 
+	/**
+	 * Inicia la estacion
+	 * @param numMoldes numero de moldes obtenido de la estacion anterior
+	 */
 	public void startStation(int numMoldes) {
 		longear(numMoldes);
 		fillLists(numMoldes);
 	}
 
+	/**
+	 * Proceso de cola para la cuarta estacion
+	 * @param numMoldes: numero de moldes obtenido de la estacion anterior
+	 */
 	public void fillLists(int numMoldes) {
 		for (int i = 0; i < numMoldes; i++) {
 			if(i==0) {
@@ -41,6 +52,10 @@ public class EstacionCuatro {
 		}
 	}
 
+	/**
+	 * Se realiza el proceso de longeo,que toma un minuto por lonja, y se agregan 12 horas de secamiento
+	 * @param numMoldes
+	 */
 	public void longear(int numMoldes) {
 		lonjasCaja= numMoldes*8;
 		for (int i = 0; i < lonjasCaja; i++) {
@@ -49,6 +64,10 @@ public class EstacionCuatro {
 		tiempo += 720; //minutos que se demora secando (12 horas)
 	}
 
+	/**
+	 * retorna el tiempo total que tomo esta estacion
+	 * @return
+	 */
 	public double getTime() {
 		double time = 0;
 		try {
