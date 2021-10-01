@@ -2,12 +2,23 @@ package model;
 
 import java.util.Random;
 
+/**
+ * 
+ * @author 
+ * 	Correspondiente a Recepción, lavado y preparación:
+ *	Se utiliza sistema de colas para simular los tiempos 
+ *	de los procesos mencionados.
+ */
 public class EstacionUno {
 
 	public double[] listAT, listAAT, listWT, listST, listET;
 	public double time;
 	Random random ;
 	
+	/**
+	 * 
+	 * @param numCajas Aleatorio (Depende del Clima por ejemplo)
+	 */
 	public EstacionUno(int numCajas){
 		System.out.println("------------------------------------------------------------- " + numCajas);
 		listAT = new double[numCajas];
@@ -18,12 +29,20 @@ public class EstacionUno {
 		random = new Random();
 	}
 	
+	/**
+	 * Comienza el proceso
+	 */
 	public void startStation() {
 		fillLists();
 		
 		random.nextInt();
 	}
 	
+	/**
+	 * Proceso repetitivo donde se tiene un rango de valores
+	 * pseudoaleatorios entre un rango determinado por la complejidad del proceso
+	 * en este caso lavar y preparar
+	 */
 	public void fillLists() {
 		for (int i = 0; i < listAT.length; i++) {
 			if(i==0) {

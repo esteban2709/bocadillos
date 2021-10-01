@@ -2,6 +2,13 @@ package model;
 
 import java.util.Random;
 
+/**
+ * 
+ * @author 
+ *	Coresspondiente al proceso de Despulpado y Cocción: 
+ *	Dependiendo de la cantidad de cajas se tendra y del 
+ *	tamano de la paila se determina la cantidad de veces que se repirte el proceso 
+ */
 public class EstacionDos {
 
 	public double[] listAT, listAAT, listWT, listST, listET;
@@ -24,7 +31,12 @@ public class EstacionDos {
 	public void startStation() {
 		fillLists();
 	}
-
+	
+	/**
+	 * Calculado el numero de veces que se repite el proceso 
+	 * se calcula aleatoriamente cuanto tiempo se demora en recibir el producto
+	 * y se calcula entre un rango de 40 a 50 (pseudoaleatorio) el tiempo de coccion del producto
+	 */
 	public void fillLists() {
 		int numVeces = (int)(totalPulpa/tamanioPaila);
 		for (int i = 0; i < numVeces; i++) {
@@ -43,7 +55,11 @@ public class EstacionDos {
 			}
 		}
 	}
-
+	
+	/**
+	 * Tiemṕo tardanza segun el numero de veces que se repite el proceso
+	 * @return
+	 */
 	public double getTime() {
 		double time = 0;
 		try {

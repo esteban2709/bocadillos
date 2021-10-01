@@ -2,6 +2,14 @@ package model;
 
 import java.util.Random;
 
+/**
+ * 
+ * @author 
+ *	
+ *	Proceso correspondiente a: Punteo y Moldeo 
+ *	Donde tenemos en cuenta la cantidad de producto total procesado
+ *	para determinar la cantidad de moldes que se utilizaran en esta estacion
+ */
 public class EstacionTres {
 
 	public double[] listAT, listAAT, listWT, listST, listET;
@@ -9,7 +17,10 @@ public class EstacionTres {
 	public int tamanioMoldes=6;
 	public int numMoldes;
 	public Random random;
-
+	/**
+	 * 
+	 * @param producto generado en la estacion dos
+	 */
 	public EstacionTres(double producto){
 		numMoldes= (int)producto/tamanioMoldes;
 		listAT = new double[numMoldes];
@@ -19,12 +30,19 @@ public class EstacionTres {
 		listET = new double[numMoldes];
 		random = new Random();
 	}
-
+	
+	/**
+	 * El tiempo inicia el producto haya llegado a su punto de coccion optimo
+	 * @param producto
+	 */
 	public void startStation(double producto) {
 		puntear(producto);
 		fillLists();
 	}
-
+	/**
+	 * Tiempos pseudoaleatorios para pasar el producto a los moldes
+	 * y para luego tenerlos listos rango determinado
+	 */
 	public void fillLists() {
 		for (int i = 0; i < numMoldes; i++) {
 			if(i==0) {
@@ -42,7 +60,12 @@ public class EstacionTres {
 			}
 		}
 	}
-
+	
+	/**
+	 * El producto puede llegar a su punto de coocion
+	 * Tardara mas o menos tiempo dependiendo de la calidad del producto
+	 * @param producto
+	 */
 	public void puntear(double producto) {
 		int veces = (int)producto/7;//7 = tamanio de paila
 		for (int i = 0; i < veces; i++) {
@@ -54,7 +77,11 @@ public class EstacionTres {
 			}
 		}
 	}
-
+	
+	/**
+	 * Tiempo total del proceso
+	 * @return time tiempo total
+	 */
 	public double getTime() {
 		double time = 0;
 		try {
