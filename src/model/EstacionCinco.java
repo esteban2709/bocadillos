@@ -1,10 +1,13 @@
 package model;
 
+import java.util.Random;
+
 public class EstacionCinco {
 	//lonjasCaja
 	public double[] listAT, listAAT, listWT, listST, listET;
 	public int cantidadCajas; // cada caja contiene 8 bocadillos
 	public double tiempo;
+	public Random random;
 	
 	public EstacionCinco(int lonjasCaja) {
 		listAT = new double[lonjasCaja];
@@ -12,6 +15,7 @@ public class EstacionCinco {
 		listWT = new double[lonjasCaja];
 		listST = new double[lonjasCaja];
 		listET = new double[lonjasCaja];
+		random = new Random();
 	}
 	
 	public void startStation(int lonjasCaja) {
@@ -22,13 +26,13 @@ public class EstacionCinco {
 	private void fillList(double lonjasCaja) {
 		for (int i = 0; i < lonjasCaja; i++) {
 			if (i==0) {
-				listAT[i]= 3+(Math.random()*8);
+				listAT[i]= 3+(random.nextDouble()*8);
 				listAAT[i]= listAT[0];
 				listWT[i] = 0;
 				listST[i] = 3+(Math.random()*5);
 				listET[i]= listAT[i]+listWT[i]+listST[i];
 			}else {
-				listAT[i] = 3+(Math.random()*8);
+				listAT[i] = 3+(random.nextDouble()*8);
 				listAAT[i]= listAAT[i-1]+listAT[i];
 				listWT[i] = (Math.max(listET[i-1], listAAT[i]))-listAAT[i];
 				listST[i] = 3+(Math.random()*5);

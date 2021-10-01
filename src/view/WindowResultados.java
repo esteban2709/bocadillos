@@ -10,17 +10,18 @@ import javax.swing.JLabel;
 import controller.Controller;
 
 
-public class WindowPrincipal extends JDialog{
+public class WindowResultados extends JDialog{
 
 	private static final long serialVersionUID = 1L;
 	private PanelCentral panelCentral;
 	
-	public WindowPrincipal(Controller controller, JFrame parent) {
+	public WindowResultados(Controller controller, JFrame parent) {
 		super(parent);
 		this.getContentPane().setBackground(Color.WHITE);
 		setTitle("Bocadillo Simuador");
-		this.setSize(1280, 530);
+		this.setSize(1280, 600);
 		this.setResizable(false);
+		setLocationRelativeTo(null);
 	
 		setLayout(new java.awt.GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();

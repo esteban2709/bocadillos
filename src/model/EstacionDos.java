@@ -1,10 +1,13 @@
 package model;
 
+import java.util.Random;
+
 public class EstacionDos {
 
 	public double[] listAT, listAAT, listWT, listST, listET;
 	public double totalPulpa;
 	public double tamanioPaila=7;//kg
+	private Random random;
 
 	public EstacionDos(int numCajas){
 		totalPulpa = numCajas*(5 + (Math.random()*10));
@@ -15,6 +18,7 @@ public class EstacionDos {
 		listWT = new double[numVeces];
 		listST = new double[numVeces];
 		listET = new double[numVeces];
+		random = new Random();
 	}
 
 	public void startStation() {
@@ -25,16 +29,16 @@ public class EstacionDos {
 		int numVeces = (int)(totalPulpa/tamanioPaila);
 		for (int i = 0; i < numVeces; i++) {
 			if(i==0) {
-				listAT[i] = 10+(Math.random()*30);
+				listAT[i] = 10+(random.nextDouble()*30);
 				listAAT[i]= listAT[0];
 				listWT[i] = 0;
-				listST[i] = 43+(Math.random()*47);
+				listST[i] = 40+(Math.random()*10);
 				listET[i]= listAT[i]+listWT[i]+listST[i];
 			}else {
-				listAT[i] = 10+(Math.random()*30);
+				listAT[i] = 10+(random.nextDouble()*30);
 				listAAT[i]= listAAT[i-1]+listAT[i];
 				listWT[i] = (Math.max(listET[i-1], listAAT[i]))-listAAT[i];
-				listST[i] = 43+(Math.random()*47);
+				listST[i] = 40+(Math.random()*10);
 				listET[i]= listAAT[i]+listWT[i]+listST[i];
 			}
 		}

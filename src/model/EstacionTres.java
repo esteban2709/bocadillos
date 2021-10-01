@@ -1,11 +1,14 @@
 package model;
 
+import java.util.Random;
+
 public class EstacionTres {
 
 	public double[] listAT, listAAT, listWT, listST, listET;
 	public double tiempo;
 	public int tamanioMoldes=6;
 	public int numMoldes;
+	public Random random;
 
 	public EstacionTres(double producto){
 		numMoldes= (int)producto/tamanioMoldes;
@@ -14,6 +17,7 @@ public class EstacionTres {
 		listWT = new double[numMoldes];
 		listST = new double[numMoldes];
 		listET = new double[numMoldes];
+		random = new Random();
 	}
 
 	public void startStation(double producto) {
@@ -24,13 +28,13 @@ public class EstacionTres {
 	public void fillLists() {
 		for (int i = 0; i < numMoldes; i++) {
 			if(i==0) {
-				listAT[i] = 5+(Math.random()*10);
+				listAT[i] = 5+(random.nextDouble()*10);
 				listAAT[i]= listAT[0];
 				listWT[i] = 0;
 				listST[i] = 8+(Math.random()*12);
 				listET[i]= listAT[i]+listWT[i]+listST[i];
 			}else {
-				listAT[i] = 5+(Math.random()*10);
+				listAT[i] = 5+(random.nextDouble()*10);
 				listAAT[i]= listAAT[i-1]+listAT[i];
 				listWT[i] = (Math.max(listET[i-1], listAAT[i]))-listAAT[i];
 				listST[i] = 8+(Math.random()*12);
@@ -51,7 +55,6 @@ public class EstacionTres {
 		}
 	}
 
-	
 	public double getTime() {
 		double time = 0;
 		try {

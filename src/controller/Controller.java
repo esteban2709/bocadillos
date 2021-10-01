@@ -9,7 +9,7 @@ import model.EstacionDos;
 import model.EstacionTres;
 import model.EstacionUno;
 import view.MainWindow;
-import view.WindowPrincipal;
+import view.WindowResultados;
 
 public class Controller implements ActionListener{
 	
@@ -25,7 +25,7 @@ public class Controller implements ActionListener{
 	public double diasAcumulados; //dias
 	public double TOTAL_DIAS = 25; //dias
 	public double HORAS_TRABAJO_DIAS=8; //horas- jornada de trabajo diaria
-	public WindowPrincipal windowPrincipal;
+	public WindowResultados windowPrincipal;
 	public MainWindow mainWindow;
 	public int stockCajas;
 	public int lonjasTotal;
@@ -34,9 +34,7 @@ public class Controller implements ActionListener{
 	public Controller() {
 		mainWindow = new MainWindow(this);
 		start();
-		System.out.println("HHollaaa");
 	}
-	
 	
 	private void actualizar() {
 		System.out.println("Se ha presionado el boton actualizar");
@@ -162,9 +160,9 @@ public class Controller implements ActionListener{
 			System.out.println("************************");
 		}
 		
-		System.out.println("transcurrieron "+diasAcumulados+ " dias y fueron "+horasAcumuladas);
-		System.out.println("al final ingresaron "+ cajasEntran+" cajas");
-		System.out.println("y se obtuvo en todos esos d�as "+stockCajas+ "cajas con 8 lonjas cada una, dando un total de "+lonjasTotal+" bocadillos de guayaba");
+		System.out.println("transcurrieron "+diasAcumulados+ " dias");
+		System.out.println("al final ingresaron en total"+ cajasEntran+" cajas durante los " + diasAcumulados + " dias de trabajo");
+		System.out.println("y se obtuvo en todos esos dias "+stockCajas+ "cajas con 8 lonjas cada una, dando un total de "+lonjasTotal+" bocadillos de guayaba");
 		//
 		
 	}
@@ -178,13 +176,13 @@ public class Controller implements ActionListener{
 	 */
 	public int findCajas() {
 		numCajasE = 4 + (int)(Math.random()*10);
-		System.out.println("N�mero de cajas que entran a bodega "+numCajasE);
+		System.out.println("N�mero de cajas que entran a bodega: "+numCajasE);
 		int countCajas=0;
 		for (int i = 0; i < numCajasE; i++) {
 			if(Math.random()<0.85) {
 				countCajas++;
 			}else {
-				System.out.println("Caja da�ada");
+				System.out.println("Caja danada");
 			}
 		}
 		return countCajas;
@@ -195,9 +193,8 @@ public class Controller implements ActionListener{
 		
 		
 		if(e.getActionCommand().equalsIgnoreCase("mas informacion")) {
-			windowPrincipal= new WindowPrincipal(this , this.mainWindow);
+			windowPrincipal= new WindowResultados(this , this.mainWindow);
 			this.windowPrincipal.setVisible(true);
-			System.out.println("JDialogg");
 		}
 		
 		if(e.getActionCommand().equalsIgnoreCase("Actualizar")) {
