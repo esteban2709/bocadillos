@@ -150,7 +150,7 @@ public class PanelCentral extends JPanel{
 		c.gridx=5;
 		c.gridwidth=6;
 		JLabel lbResult6= new JLabel();
-		lbResult6.setText("Total dias de trabajo: "+controller.diasAcumulados+ " dias. " +"Ingresaron en total"+ controller.cajasEntran+" cajas durante los " + controller.diasAcumulados + " dias de trabajo");
+		lbResult6.setText("Total dias de trabajo: "+controller.diasAcumulados+ " dias. " +"Ingresaron en total: "+ controller.cajasEntran+" cajas durante los " + controller.diasAcumulados + " dias de trabajo");
 		lbResult6.setForeground(Color.BLACK);
 		lbResult6.setFont(new Font("Helvetica", Font.ITALIC, 19));
 		add(lbResult6, c);
@@ -160,7 +160,7 @@ public class PanelCentral extends JPanel{
 		c.gridx=5;
 		c.gridwidth=6;
 		JLabel lbResult7= new JLabel();
-		lbResult7.setText(" y se obtuvo en todos esos dias "+ controller.stockCajas+ "cajas con 8 lonjas cada una, dando un total de "+controller.lonjasTotal+" bocadillos de guayaba");
+		lbResult7.setText(" y se obtuvo en esos dias "+ controller.stockCajas+ " cajas con 8 lonjas cada una, dando un total de "+controller.lonjasTotal+" bocadillos de guayaba.");
 		lbResult7.setForeground(Color.BLACK);
 		lbResult7.setFont(new Font("Helvetica", Font.ITALIC, 19));
 		add(lbResult7, c);
